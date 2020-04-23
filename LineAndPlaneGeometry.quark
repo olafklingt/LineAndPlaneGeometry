@@ -1,0 +1,11 @@
+(
+// required:
+    \name:           "LineAndPlaneGeometry",
+    \path:           "LineAndPlaneGeometry",
+    \summary:        "Line and Plane Geometry Classes",
+    \author:         "Olaf Hochherz",
+    \since:          "2013",
+    \schelp:         "",
+    \ext_dependancy: "VectorSpace",
+    \url:            "https://github.com/olafklingt/LineAndPlaneGeometry",
+)
