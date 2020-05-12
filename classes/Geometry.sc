@@ -94,19 +94,19 @@ LineND{
 	}
 
 	projectionScalar{arg aPoint;
-		^directionVector.projectionScalar(aPoint-positionVector)
+		^directionVector.projectionScalar(aPoint.asRealVector-positionVector)
 	}
 	projectPoint2Line{arg aPoint;
-		^positionVector+directionVector.proj(aPoint-positionVector);
+		^positionVector+directionVector.proj(aPoint.asRealVector-positionVector);
 	}
 	closestsPointOnSegment{arg aPoint;
 		if(segment,
 			{
 				^this.skewLinesNearestPoints(
-					LineND(aPoint,this.projectPoint2Line(aPoint)-aPoint,true)
+					LineND(aPoint.asRealVector,this.projectPoint2Line(aPoint.asRealVector)-aPoint.asRealVector,true)
 				)[0];
 			},{
-				^this.projectPoint2Line(aPoint);
+				^this.projectPoint2Line(aPoint.asRealVector);
 		})
 	}
 
@@ -185,8 +185,8 @@ Plane{
 		var  b = (d1<|> d2);
 		var  d = b;
 		var  e = sum(d2**2);
-		var  c = ((aPoint-bp) <|> d1);
-		var  f =  ((aPoint-bp) <|> d2);
+		var  c = ((aPoint.asRealVector-bp) <|> d1);
+		var  f =  ((aPoint.asRealVector-bp) <|> d2);
 		var delta = (a*e)-(b*d) + 0.0;
 		var alpha = ((c*e)-(b*f)) / delta;
 		var beta = ((a*f)-(c*d))/delta;
@@ -195,7 +195,7 @@ Plane{
 
 	projectionPoint2Plane{arg aPoint;
 		var ppoint;
-		ppoint=this.projectionScalars(aPoint);
+		ppoint=this.projectionScalars(aPoint.asRealVector);
 		^this.vectorFromPointOnPlane(ppoint);
 	}
 	vectorFromPointOnPlane{|dot|
